@@ -58,6 +58,7 @@ int main() {
 		//debugg(substr);
 		tmp.replace(l-1,len,substr);
 		//cout << endl;
+		//test
 	}
  	
 		cout << tmp << endl;
