@@ -36,83 +36,52 @@ int lg2(int x)   {   return 32 - __builtin_clz(x) - 1;	}
 
 //Variables Declaration
 
-string  mat[2000];
-int n , m ;
-int vis[2000][2000];
-int sol[200000];
-
-int dx[4] = { -1, 0, 1, 0};
-int dy[] = {0, 1, 0, -1};
-
-bool isValid(int X, int Y) {
-	bool ok = true;
-	if (X < 0 ) ok = false;
-	if (Y < 0 ) ok = false;
-	if (X >= n ) ok = false;
-	if (Y >= m ) ok = false;
-	return ok;
-}
-bool isWall (int X, int Y) {
-	if ( mat[X][Y] == '*') return true;
-	return false;
-}
-
-void dfs(int startX, int startY , int t ) {
-	if (vis[startX][startY] == t) {
-		return ;
-	}
-	//debug(startX);
-	//debugg(startY);
-	vis[startX][startY] = t;
-
-	for (int i = 0 ; i < 4 ; ++i) {
-		int newX = startX + dx[i];
-		int newY = startY + dy[i];
-		//debug(newX);
-		//debugg(newY);
-		if (isValid(newX, newY)) {
-			if (isWall(newX, newY)) {
-				sol[t]++;
-			} else {
-				dfs(newX, newY, t);
-			}
-		}
-
-	}
-
-
-}
 
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(0);
 	cout.tie(0);
 
-	int Q;
-	cin >> n >> m >> Q;
+	/*
+	1101 = 13
+	1011 = 11
+	*/
+	//1111 = 15
 	
-	int cdsds;
+	/*int N = 32 ;
+	int bits = log2(N) + 1 ;
+	*/
 
-	for (int i = 0 ; i < n  ; ++i) {
-		cin >> mat[i]
-		sqrt(2);
-	}
+	int n ;
+	cin >> n ;
 
-
-	for (int t = 1 ; t <= Q ; ++t ) {
-		int x , y;
-		cin >> x >> y ;
-
-		//bfs start
-		if (vis[x-1][y-1] == 0 )
-		{
-			dfs(x - 1, y - 1, t);
-
+	string str =  "";
+// 	  1101
+//	   110
+//	    11 
+//	     1
+	while(n != 0){
+		int rightMostBit = (n & 1); 
+	
+		if(rightMostBit == 1 ){
+			str += '1'  ;
+		}else{
+			str += '0'  ;
 		}
-
-		cout << sol[vis[x-1][y-1]] << endl;
+		n = n >> 1 ;
 	}
-	string str;
+//	cout << str << endl;
+
+	int result = 0;
+
+	for(int i = 0 ; i < str.size() ; ++i){
+		if (str[i]=='1'){
+			result += pow(2, str.size() -1 -i ) ; 
+		}
+	}
+	cout << result << endl;
+
+
 
 	return 0;
 }

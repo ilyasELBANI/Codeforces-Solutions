@@ -36,83 +36,26 @@ int lg2(int x)   {   return 32 - __builtin_clz(x) - 1;	}
 
 //Variables Declaration
 
-string  mat[2000];
-int n , m ;
-int vis[2000][2000];
-int sol[200000];
-
-int dx[4] = { -1, 0, 1, 0};
-int dy[] = {0, 1, 0, -1};
-
-bool isValid(int X, int Y) {
-	bool ok = true;
-	if (X < 0 ) ok = false;
-	if (Y < 0 ) ok = false;
-	if (X >= n ) ok = false;
-	if (Y >= m ) ok = false;
-	return ok;
-}
-bool isWall (int X, int Y) {
-	if ( mat[X][Y] == '*') return true;
-	return false;
-}
-
-void dfs(int startX, int startY , int t ) {
-	if (vis[startX][startY] == t) {
-		return ;
-	}
-	//debug(startX);
-	//debugg(startY);
-	vis[startX][startY] = t;
-
-	for (int i = 0 ; i < 4 ; ++i) {
-		int newX = startX + dx[i];
-		int newY = startY + dy[i];
-		//debug(newX);
-		//debugg(newY);
-		if (isValid(newX, newY)) {
-			if (isWall(newX, newY)) {
-				sol[t]++;
-			} else {
-				dfs(newX, newY, t);
-			}
-		}
-
-	}
-
-
-}
 
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(0);
 	cout.tie(0);
 
-	int Q;
-	cin >> n >> m >> Q;
+	int n ;
+	cin >> n;
+
+	bitset<32> myBits (n);
 	
-	int cdsds;
+	string str =  myBits.to_string();
+	reverse(str.begin(),str.end());
+	
+	string reversedString = str.substr(0,  log2(n)+1);
+	bitset<32> resultBits (reversedString);
 
-	for (int i = 0 ; i < n  ; ++i) {
-		cin >> mat[i]
-		sqrt(2);
-	}
+	cout << resultBits.to_ulong() << endl;
 
 
-	for (int t = 1 ; t <= Q ; ++t ) {
-		int x , y;
-		cin >> x >> y ;
-
-		//bfs start
-		if (vis[x-1][y-1] == 0 )
-		{
-			dfs(x - 1, y - 1, t);
-
-		}
-
-		cout << sol[vis[x-1][y-1]] << endl;
-	}
-	string str;
 
 	return 0;
 }
