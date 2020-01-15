@@ -3,10 +3,10 @@
 *.com
 *.class
 *.dll
-*.exe
+**/*.exe
 *.o
 *.so
-
+do not share
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source
@@ -19,7 +19,7 @@
 *.rar
 *.tar
 *.zip
-
+DO_NOT_SHARE
 # Logs and databases #
 ######################
 *.log
@@ -30,6 +30,7 @@
 ######################
 .DS_Store
 .DS_Store?
+.vscode
 ._*
 .Spotlight-V100
 .Trashes

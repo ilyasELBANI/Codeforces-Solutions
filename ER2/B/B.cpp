@@ -57,7 +57,6 @@ int main() {
  		int x ; 
  		cin >> x ;
  		cout << upper_bound(all(A),x) - A.begin() << endl;	
-
  	}
 
 

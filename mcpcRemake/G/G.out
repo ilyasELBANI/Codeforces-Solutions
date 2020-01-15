@@ -1,0 +1,10 @@
+|-- home
+|-- hacker42
+    |-- desktop
+    |-- downloads
+    |   |-- book.pdf
+    |   |-- movie.mp4
+    |-- labs
+        |-- 1337
+            |-- libstd.c
+            |-- printf.c
